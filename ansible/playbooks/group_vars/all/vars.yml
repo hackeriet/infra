@@ -11,6 +11,7 @@ apt_packages:
 
 ssh_users:
   - kfh
+  - duck
 
 user_h4x0r_gid: 1001
 user_h4x0r_uid: 1001
