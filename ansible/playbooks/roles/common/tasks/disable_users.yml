@@ -1,0 +1,8 @@
+---
+# Disable stock users
+- name: Disable/delete stock users
+  user:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ disable_users }}"
+

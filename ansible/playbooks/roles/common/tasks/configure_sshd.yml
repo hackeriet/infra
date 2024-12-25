@@ -1,0 +1,7 @@
+---
+
+- name: Configure sshd
+  template:
+    src: ssh/sshd_config.j2
+    dest: /etc/ssh/sshd_config.d/hackeriet.conf
+  notify: Reload SSH

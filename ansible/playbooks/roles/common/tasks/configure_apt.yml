@@ -1,0 +1,26 @@
+---
+- name: Configure sources.list
+  template:
+    src: apt/sources.list.j2
+    dest: /etc/apt/sources.list
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+  - Update apt cache
+
+- name: Add missing apt keys
+  ansible.builtin.apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: "{{ item }}"
+  loop:
+  - "0E98404D386FA1D9"
+  - "112695A0E562B32A"
+  - "54404762BBB6E853"
+  - "605C66F00D6C9793"
+  - "6ED0E7B82643E131"
+
+- name: Run apt update if the cache is is stale
+  apt:
+    update_cache: true
+    cache_valid_time: 3600

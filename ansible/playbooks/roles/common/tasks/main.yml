@@ -1,0 +1,34 @@
+---
+
+- name: Get git version
+  shell: git log -1 '--date=format:%Y-%m-%d %H:%M' '--pretty=format:%cd %h'  # noqa 303 305
+  register: git_version
+  delegate_to: localhost
+  changed_when: false
+
+- ansible.builtin.include_tasks:
+    file: configure_wifi.yml
+
+- ansible.builtin.include_tasks:
+    file: configure_apt.yml
+
+- ansible.builtin.include_tasks:
+    file: configure_sshd.yml
+
+- ansible.builtin.include_tasks:
+    file: install_packages.yml
+
+- ansible.builtin.include_tasks:
+    file: install_fastfetch.yml
+
+- ansible.builtin.include_tasks:
+    file: user_root.yml
+
+- ansible.builtin.include_tasks:
+    file: user_h4x0r.yml
+
+- ansible.builtin.include_tasks:
+    file: disable_users.yml
+
+- ansible.builtin.include_tasks:
+    file: set_hostname.yml

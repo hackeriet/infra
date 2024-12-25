@@ -1,0 +1,11 @@
+---
+- name: "Configure wifi networks through wpa_supplicant"
+  ansible.builtin.blockinfile:
+    path: "/etc/wpa_supplicant/wpa_supplicant.conf"
+    append_newline: true
+    prepend_newline: true
+    block: "{{ wpa_supplicant_extra | join('\n') }}"
+  notify: "Reload WPA supplicant"
+
+- name: "Flush handlers"
+  meta: "flush_handlers"

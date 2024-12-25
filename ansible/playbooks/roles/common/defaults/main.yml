@@ -1,0 +1,3 @@
+# Disable these users by default (if they exist on the devices)
+disable_users:
+  - pi

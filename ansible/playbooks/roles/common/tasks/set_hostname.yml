@@ -1,0 +1,4 @@
+---
+- name: Set hostname from hosts file
+  ansible.builtin.hostname:
+    name: "{{ inventory_hostname }}"

@@ -1,0 +1,16 @@
+# Common packages
+apt_packages:
+  - curl
+  - file
+  - git
+  - htop
+  - less
+  - mtr
+  - sudo
+  - vim
+
+ssh_users:
+  - kfh
+
+user_h4x0r_gid: 1001
+user_h4x0r_uid: 1001

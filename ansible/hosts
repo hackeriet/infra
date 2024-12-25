@@ -1,0 +1,23 @@
+# Create a unique host_vars file per host and put the ansible host in there
+# Use Hackeriet tailnet for Ansible hosts
+
+
+[event]
+# All devices we bring to events (Pis etc.). Goes through extra hardening
+
+# Receipt printer pi
+pi01.hackeriet.no
+# ???
+pi02.hackeriet.no
+
+
+[pi]
+# All RPis included as a range
+pi[01:02].hackeriet.no
+
+
+[linux]
+# Linux hosts
+
+[linux:children]
+pi  # All of the Pis run linux

@@ -1,0 +1,20 @@
+---
+- name: Add h4x0r group
+  group:
+    name: h4x0r
+    gid: "{{ user_h4x0r_gid | default('1000') }}"
+
+- name: Add h4x0r user
+  user:
+    name: h4x0r
+    comment: "Hackeriet user"
+    uid: "{{ user_h4x0r_uid | default('1000') }}"
+    group: h4x0r
+    shell: /bin/bash
+    password: "{{ user_h4x0r_password | default('') }}"
+
+- name: Add ssh keys to h4x0r user
+  authorized_key:
+    user: h4x0r
+    key: "{{ lookup('file', '../pubkeys/'+item+'.pub') }}"
+  with_items: "{{ ssh_users }}"
